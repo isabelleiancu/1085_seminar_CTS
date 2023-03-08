@@ -4,7 +4,6 @@ import ro.ase.acs.cts.classes.CreateTableOperation;
 import ro.ase.acs.cts.classes.InsertDataOperation;
 import ro.ase.acs.cts.classes.ReadDataOperation;
 import ro.ase.acs.cts.interfaces.DatabaseOperation;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ public class Main {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
             connection.setAutoCommit(false);
-
             List<DatabaseOperation> operations = new ArrayList<>();
             operations.add(new CreateTableOperation());
             operations.add(new InsertDataOperation());
@@ -24,10 +22,10 @@ public class Main {
             for (DatabaseOperation operation : operations) {
                 operation.execute(connection);
             }
+
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

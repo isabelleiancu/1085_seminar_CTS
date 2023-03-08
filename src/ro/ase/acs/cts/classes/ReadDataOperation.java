@@ -1,7 +1,6 @@
 package ro.ase.acs.cts.classes;
 
 import ro.ase.acs.cts.interfaces.DatabaseOperation;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
