@@ -7,7 +7,6 @@ import ro.ase.acs.cts.interfaces.DatabaseOperation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,17 +21,13 @@ public class Main {
             operations.add(new InsertDataOperation());
             operations.add(new ReadDataOperation());
 
-            executeOperations(operations, connection);
-
+            for (DatabaseOperation operation : operations) {
+                operation.execute(connection);
+            }
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void executeOperations(List<DatabaseOperation> operations, Connection connection) throws SQLException {
-        for (DatabaseOperation operation : operations) {
-            operation.execute(connection);
-        }
-    }
 }
